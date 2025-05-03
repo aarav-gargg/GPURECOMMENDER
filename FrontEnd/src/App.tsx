@@ -25,7 +25,6 @@ function App() {
   const handleAiAssist = useCallback(async (description: string) => {
     try {
       const requirements = await analyzeWorkloadDescription(description);
-      // Display a message to the user that AI is analyzing their input
       const newMessage: ChatMessage = {
         id: Date.now().toString(),
         role: 'assistant',
@@ -80,7 +79,7 @@ function App() {
     <div className={`min-h-screen flex flex-col transition-colors duration-300 ${darkMode ? 'dark bg-gray-900' : 'bg-gray-50'}`}>
       {/* Header */}
       <header className="bg-white dark:bg-gray-800 shadow-sm sticky top-0 z-40">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
               <Zap size={28} className="text-purple-600 dark:text-purple-400" />
@@ -88,25 +87,7 @@ function App() {
             </div>
             
             <div className="hidden md:flex items-center space-x-4">
-              <nav>
-                <ul className="flex space-x-8">
-                  <li>
-                    <a href="#" className="text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400">
-                      Dashboard
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" className="text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400">
-                      Cost Calculator
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" className="text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400">
-                      Documentation
-                    </a>
-                  </li>
-                </ul>
-              </nav>
+              
               
               <button
                 onClick={toggleDarkMode}
@@ -165,7 +146,7 @@ function App() {
 
       {/* Main content */}
       <main className="flex-1">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <div className="max-w-8xl px-4 sm:px-6 lg:px-8 py-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
             {/* Form section */}
             <div className="lg:col-span-4">
@@ -179,14 +160,15 @@ function App() {
             <div className="lg:col-span-8 space-y-8">
               {recommendations.length > 0 ? (
                 <>
-                  <CostComparison 
-                    recommendations={recommendations} 
-                    workloadType={workloadType} 
-                  />
                   <RecommendationsList 
                     recommendations={recommendations} 
                     workloadType={workloadType} 
                   />
+                  <CostComparison 
+                    recommendations={recommendations} 
+                    workloadType={workloadType} 
+                  />
+                  
                 </>
               ) : (
                 <div className="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg text-center">

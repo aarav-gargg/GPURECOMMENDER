@@ -1,17 +1,35 @@
+// types/index.ts
+
 export interface GPUModel {
-  id: string;
-  name: string;
-  manufacturer: string;
-  memory: number; // GB
-  performance: number; // relative score
-  trainingCostPerHour: number;
-  inferenceCostPerHour: number;
-  availability: string[];
+  country: string;
+  operating_system: string;
+  resource_class: string;
+  resource_name: string;
+  vcpus: number;
+  ram: number;
+  price_per_hour: number;
+  price_per_month: number;
+  price_per_half_year: number;
+  price_per_year: number;
+  price_per_spot: number;
+  currency: string;
+  is_gpu: number;
+  is_spot: number;
+  resource: string;
+  resource_type: string;
+  region: string;
+  gpu_description: string;
+  is_public: number;
+  performanceScore: number;
+  costEfficiency: number;
+  utilizationFactor: number;
+  adjustedScore: string;
 }
 
+
 export interface WorkloadRequirements {
-  modelType: string;
-  datasetSize: string;
+  usecase: string;
+  datasetSize: number;
   workloadType: 'training' | 'inference';
   region: string;
   maxBudget: number;
