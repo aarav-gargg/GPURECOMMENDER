@@ -1,8 +1,11 @@
 import express from 'express';
 import router from './routes/pricing.route.js'
+import cors from "cors"
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+app.use(cors({ origin: "http://localhost:5173" }));
+
 
 app.use(express.json());
 
