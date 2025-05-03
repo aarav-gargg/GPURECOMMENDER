@@ -14,7 +14,6 @@ export const workLoadInputHandler = async (req, res) => {
     })
   } catch (error) {
     console.error("Pricing API error:", error?.response?.data || error.message);
-
     res.status(error.response?.status || 500).send({
       message: error?.response?.data || "Some error occurred",
       success: false,

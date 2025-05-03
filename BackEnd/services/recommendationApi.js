@@ -1,17 +1,24 @@
 import { gpuBenchmarks, COMPATIBILITY_INDEX } from "../helpers/gpuRequirements.js"
 import { computePerformanceScore } from "./performaceScoreCalculator.js";
+import { parseGpuDescription } from "./gpuDescriptionParser.js";
+import { scaleBenchmarkByGpuCount } from "./updateGpuBenchmarks.js";
 
 export const recommendationsApi = (pricingData, useCase, budget, requiredMemory , workloadType) => {
     const useCaseIndex = COMPATIBILITY_INDEX[useCase];
     const enrichedData = pricingData.data
         .map(instance => {
-            const gpuType = instance.gpu_description?.replace("1x ", "").trim();
 
-            if (!gpuType || !gpuBenchmarks[gpuType]) return null;
+            if(!instance.gpu_description){
+                return null;
+            }
 
-            const benchmark = gpuBenchmarks[gpuType];
+            const {model , multiplier} = parseGpuDescription(instance.gpu_description)
+
+            const benchmark = gpuBenchmarks[model];
 
             if (!benchmark) return null;
+
+            scaleBenchmarkByGpuCount(benchmark , multiplier);
 
             const isCompatible = benchmark.compatibility[useCaseIndex];
             if (!isCompatible) return null;

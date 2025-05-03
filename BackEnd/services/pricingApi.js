@@ -8,7 +8,6 @@ export const pricingApi = async (region) => {
   );
     return response.data;
   } catch (error) {
-    console.log(error);
     throw error;
   }
 };
