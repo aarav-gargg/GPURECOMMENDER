@@ -1,0 +1,14 @@
+{
+    "name": "gpu-cost-optimizer-backend",
+    "version": "1.0.0",
+    "description": "Backend for GPU Cost Optimizer and Recommender",
+    "main": "index.js",
+    "scripts": {
+      "start": "node index.js",
+      "dev": "nodemon index.js"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC"
+  }
+  
