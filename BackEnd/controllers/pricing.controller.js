@@ -3,10 +3,10 @@ import { recommendationsHandler } from "./recommendations.controller.js";
 
 export const workLoadInputHandler = async (req, res) => {
   try {
-    const {region , datasetSize , budget , useCase} = req.body;
+    const {region , datasetSize , budget , useCase , workloadType} = req.body;
     const pricingData = await pricingApi(region);
 
-    const response = await recommendationsHandler(pricingData , useCase , budget , datasetSize);
+    const response = await recommendationsHandler(pricingData , useCase , budget , datasetSize , workloadType);
 
     res.send({
       success : true , 

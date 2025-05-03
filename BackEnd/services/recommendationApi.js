@@ -1,7 +1,7 @@
 import { gpuBenchmarks, COMPATIBILITY_INDEX } from "../helpers/gpuRequirements.js"
 import { computePerformanceScore } from "./performaceScoreCalculator.js";
 
-export const recommendationsApi = (pricingData, useCase, budget, requiredMemory) => {
+export const recommendationsApi = (pricingData, useCase, budget, requiredMemory , workloadType) => {
     const useCaseIndex = COMPATIBILITY_INDEX[useCase];
     const enrichedData = pricingData.data
         .map(instance => {
@@ -21,7 +21,7 @@ export const recommendationsApi = (pricingData, useCase, budget, requiredMemory)
 
             const utilizationFactor = Math.min(requiredMemory / benchmark.memory, 1);
 
-            const performanceScore = computePerformanceScore(benchmark, useCase);
+            const performanceScore = computePerformanceScore(benchmark, workloadType);
             const costEfficiency = (performanceScore / price) * utilizationFactor;
 
             return {
