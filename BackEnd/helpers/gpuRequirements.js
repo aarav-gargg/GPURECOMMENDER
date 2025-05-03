@@ -1,5 +1,5 @@
 export const gpuBenchmarks = {
-  "A100": {
+  "A100-80GB": {
     tf32: 312,
     fp16: 624,
     memory: 80,
@@ -15,7 +15,7 @@ export const gpuBenchmarks = {
     score: 75,
     compatibility: [true, false, true, true, true]
   },
-  "A10": {
+  "A10-24GB": {
     tf32: 124,
     fp16: 248,
     memory: 24,
@@ -23,7 +23,7 @@ export const gpuBenchmarks = {
     score: 70,
     compatibility: [true, true, true, true, true]
   },
-  "V100": {
+  "V100-32GB": {
     tf32: 130,
     fp16: 260,
     memory: 32,
@@ -31,7 +31,7 @@ export const gpuBenchmarks = {
     score: 73,
     compatibility: [true, false, true, true, true]
   },
-  "T4": {
+  "T4-16GB": {
     tf32: 65,
     fp16: 130,
     memory: 16,
@@ -47,7 +47,7 @@ export const gpuBenchmarks = {
     score: 72,
     compatibility: [true, true, true, true, true]
   },
-  "HGXH100": {
+  "HGX H100": {
     tf32: 500,
     fp16: 1000,
     memory: 80,
@@ -55,7 +55,7 @@ export const gpuBenchmarks = {
     score: 100,
     compatibility: [true, false, true, true, true]
   },
-  "RTXA6000": {
+  "RTX A6000": {
     tf32: 150,
     fp16: 300,
     memory: 48,
@@ -63,7 +63,7 @@ export const gpuBenchmarks = {
     score: 80,
     compatibility: [true, true, true, true, true]
   },
-  "RTXA4000": {
+  "RTX-4000-20GB": {
     tf32: 80,
     fp16: 160,
     memory: 20,
