@@ -3,12 +3,18 @@
     "version": "1.0.0",
     "description": "Backend for GPU Cost Optimizer and Recommender",
     "main": "index.js",
+    "type": "module",
     "scripts": {
-      "start": "node index.js",
-      "dev": "nodemon index.js"
+        "start": "node index.js",
+        "dev": "nodemon index.js"
     },
     "keywords": [],
     "author": "",
-    "license": "ISC"
-  }
-  
+    "license": "ISC",
+    "dependencies": {
+        "axios": "^1.9.0",
+        "cors": "^2.8.5",
+        "dotenv": "^16.5.0",
+        "express": "^5.1.0"
+    }
+}
