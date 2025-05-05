@@ -28,7 +28,7 @@ const RecommendationsList: React.FC<RecommendationsListProps> = ({
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {sortedRecommendations.map((recommendation, index) => (
             <RecommendationCard
-              key={recommendation.model.id}
+            key={recommendation.model.id || recommendation.model._id || index}
               recommendation={recommendation}
               isTopPick={index === 0}
               workloadType={workloadType}

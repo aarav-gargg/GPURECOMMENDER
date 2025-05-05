@@ -1,5 +1,5 @@
 import { WorkloadRequirements } from '../types';
-import { modelTypeOptions, datasetSizeOptions, regionOptions } from '../data/gpuModels';
+import { usecaseOptions, datasetSizeOptions, regionOptions } from '../data/gpuModels';
 
 // Simulated AI service - in a real application, this would call an OpenAI API endpoint
 export const analyzeWorkloadDescription = async (description: string): Promise<Partial<WorkloadRequirements>> => {
@@ -7,14 +7,14 @@ export const analyzeWorkloadDescription = async (description: string): Promise<P
   await new Promise(resolve => setTimeout(resolve, 1500)); // Simulate network delay
   
   // Simple keyword matching for demonstration purposes
-  const modelType = determineModelType(description);
+  const usecase = determineusecase(description);
   const datasetSize = determineDatasetSize(description);
   const workloadType = description.toLowerCase().includes('inference') ? 'inference' : 'training';
   const region = determineRegion(description);
   const maxBudget = extractBudget(description);
   
   return {
-    modelType,
+    usecase,
     datasetSize,
     workloadType,
     region,
@@ -54,7 +54,7 @@ export const getChatbotResponse = async (message: string): Promise<string> => {
 };
 
 // Helper functions for keyword matching
-function determineModelType(text: string): string {
+function determineusecase(text: string): string {
   const lowerText = text.toLowerCase();
   
   if (lowerText.includes('llm') || lowerText.includes('language model')) {

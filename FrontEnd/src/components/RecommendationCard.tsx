@@ -1,6 +1,6 @@
 import React from 'react';
 import { Recommendation } from '../types';
-import { CheckCircle, AlertCircle, DollarSign, Clock, Zap } from 'lucide-react';
+import { CheckCircle, DollarSign, Clock, Zap } from 'lucide-react';
 
 interface RecommendationCardProps {
   recommendation: Recommendation;
@@ -14,7 +14,7 @@ const RecommendationCard: React.FC<RecommendationCardProps> = ({
   workloadType
 }) => {
   const { model, score, estimatedCost, estimatedTime, reasons } = recommendation;
-  
+
   return (
     <div className={`relative overflow-hidden rounded-xl shadow-lg transition-all duration-300 ${
       isTopPick 
@@ -34,10 +34,10 @@ const RecommendationCard: React.FC<RecommendationCardProps> = ({
         <div className="flex justify-between items-start">
           <div>
             <h3 className="font-bold text-xl text-gray-900 dark:text-white">
-              {model.manufacturer} {model.name}
+              {model.gpu_description}
             </h3>
             <p className="text-sm text-gray-500 dark:text-gray-400">
-              {model.memory}GB Memory
+              {model.ram}GB RAM
             </p>
           </div>
           <div className="flex items-center bg-blue-100 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 px-3 py-1 rounded-full text-sm font-medium">
@@ -50,7 +50,7 @@ const RecommendationCard: React.FC<RecommendationCardProps> = ({
           <div className="flex items-center">
             <DollarSign size={16} className="mr-2 text-green-600 dark:text-green-400" />
             <span className="text-gray-700 dark:text-gray-300">
-              ${estimatedCost.toFixed(2)}/hr
+              ${estimatedCost.toFixed(2)} total
             </span>
           </div>
           <div className="flex items-center">
